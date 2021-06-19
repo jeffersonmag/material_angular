@@ -5,3 +5,8 @@ table {
 i.edit {
     color: royalblue;
 }
+
+i.delete {
+    margin-left: 20px;
+    color: darkred;
+}

@@ -9,6 +9,8 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  cabecalho: string = 'Aplicação Cadastro de Produtos';
+
   ngOnInit(): void {
   }
 

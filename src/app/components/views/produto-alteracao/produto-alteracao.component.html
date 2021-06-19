@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Alterar Produto</h2>
+<div mat-dialog-content>
+    <div>
+        <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input matInput [(ngModel)]="produto.codigo" name='codigo'>
+        </mat-form-field><br />
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput [(ngModel)]="produto.descricao" name='descricao'>
+        </mat-form-field><br />
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <mat-select [(ngModel)]="produto.categoria" name='categoria'>
+                <mat-option *ngFor="let categoria of categorias">{{ categoria }}</mat-option>
+            </mat-select>
+        </mat-form-field><br />
+    </div>
+    <mat-form-field>
+        <mat-label>Unidade</mat-label>
+        <input matInput [(ngModel)]="produto.unidade" name='unidade'>
+    </mat-form-field><br />
+</div>
+<div mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Fechar</button>
+    <button mat-button [mat-dialog-close]="produto">Alterar</button>
+</div>

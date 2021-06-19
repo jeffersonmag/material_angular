@@ -1,14 +1,28 @@
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 export class CoreService<T> {
 
     protected http: HttpClient;
+    protected snackBar : MatSnackBar;
     private url: string;
 
-    constructor(http: HttpClient, url: string){
+    constructor(http: HttpClient, url: string, snackBar: MatSnackBar){
         this.http = http;
+        this.snackBar = snackBar;
         this.url = url;
+    }
+
+    //exibe uma mensagem para o usuário
+    showMessage(msg: string, isError: boolean = false): void {
+        this.snackBar.open(msg, 'x', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: isError ? 'error' : 'success',
+        });
     }
 
     //obtém uma lista de elementos
@@ -26,7 +40,14 @@ export class CoreService<T> {
 
     //inclui um elemento
     public postItem(item: T) : Observable<T> {
-        return this.http.post<T>(this.url, item);
+        return this.http.post<T>(this.url, item)
+        .pipe(
+            map(obj => obj),
+            catchError(e => {
+                this.showMessage('Ocorreu um erro na inclusão', true);
+                return EMPTY;
+            })
+            );
     }
 
     //alteração de um elemento

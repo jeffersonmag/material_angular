@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdutoNovoComponent } from 'src/app/components/views/produto-novo/produto-novo.component';
-import { ProdutoNovoModule } from './produto-novo.module';
 
 const routes: Routes = [
   { path: '', component: ProdutoNovoComponent }

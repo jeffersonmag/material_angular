@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { HomeModule } from '../home/home.module';
 import { ProdutosModule } from '../produtos/produtos.module';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ProdutosModule } from '../produtos/produtos.module';
     MatSidenavModule,
     MatListModule,
     HomeModule,
-    ProdutosModule
+    ProdutosModule,
+    MatSnackBarModule
   ],
   exports: [
     NavbarComponent
