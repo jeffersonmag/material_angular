@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="produtos">
+        <!--INICIO COLUNA CÓDIGO-->
+        <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef>Código</th>
+            <td mat-cell *matCellDef="let row">{{ row.codigo }}</td>
+        </ng-container>
+        <!--FIM COLUNA CÓDIGO-->
+
+        <!--INICIO COLUNA DESCRIÇÃO-->
+        <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef>Descrição</th>
+            <td mat-cell *matCellDef="let row">{{ row.descricao }}</td>
+        </ng-container>
+        <!--FIM COLUNA DESCRIÇÃO-->
+
+        <!--INICIO COLUNA UNIDADE-->
+        <ng-container matColumnDef="unidade">
+            <th mat-header-cell *matHeaderCellDef>Unidade</th>
+            <td mat-cell *matCellDef="let row">{{ row.unidade }}</td>
+        </ng-container>
+        <!--FIM COLUNA UNIDADE-->
+
+        <!--INICIO COLUNA PREÇO-->
+        <ng-container matColumnDef="preco">
+            <th mat-header-cell *matHeaderCellDef>Preço</th>
+            <td mat-cell *matCellDef="let row">{{ row.preco | currency:'BRL' }}</td>
+        </ng-container>
+        <!--FIM COLUNA PREÇO-->
+
+        <!--INICIO COLUNA AÇÃO-->
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef>Tarefas</th>
+            <td mat-cell *matCellDef="let row">
+                <a routerLink="/">
+                    <i class="material-icons edit">edit</i>
+                </a>
+            </td>
+        </ng-container>
+        <!--FIM COLUNA AÇÃO-->
+
+        <tr mat-header-row *matHeaderRowDef="listaColunas"></tr>
+        <tr mat-row *matRowDef="let row; columns: listaColunas;"></tr>
+    </table>
+</div>
